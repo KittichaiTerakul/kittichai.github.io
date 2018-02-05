@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="style1.css">
+	</head>
+	<body>
+		<audio controls autoplay loop>
+  		<source src="Kalimba.mp3">
+		</audio>
+		<input class="counter" type="text" size="3" id="counter" /></input>
+		<div class="Name-Game" id="Name-Game">
+		<img src="logo.png" alt="battle" class="battle" id="battle" >
+		<img src="logo1.png" alt="quiz" class="quiz" id="quiz" >
+		<center><img src="choose.png" alt="choose" class="choose" id="choose" width="400" height="200">
+		<img src="level.png" alt="level" class="level" id="level" width="400" height="200"></center>
+		</div>
+		</br>
+		</br>
+		</br>
+		</br>
+		<button class="button1" id="Play"></button>
+		<button class="button10" id="10" ></button>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<button class="button20" id="20" ></button>
+  		<div id ="quizContainer" class="container">
+  			<div class="title">Harry Porter</div>
+  			
+  			<div id="question" class="question"></div>
+  			<label class="option" id="opt1"><input type="radio" name="option" value="1" /></label>
+  			<label class="option" id="opt2"><input type="radio" name="option" value="2" /></label>
+  			<label class="option" id="opt3"><input type="radio" name="option" value="3" /></label>
+  			<label class="option" id="opt4"><input type="radio" name="option" value="4" /></label>
+
+  		</div>
+  		<div id="result" class="container result" style="display:none;"></div>
+
+    	<script src="jquery-3.3.1.min.js" charset="utf-8">
+		</script>
+		<script >
+
+			var num;
+
+			
+			var lst = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+			var item;
+			var iNum;
+			var score = 0;
+			var ans = [];
+			var seconds=30;
+ 			document.getElementById("counter").value='30';
+			function run(num){
+				$(document).ready(function(){
+            		$.ajax({
+                		url : 'q.json',
+                		method :'GET' ,
+                		dataType: 'json',
+                		success : function(response){
+                			let string = "";
+                			string += "Question : ";
+                			string += response[num].Question;
+                			
+                			
+                			$('#question').html(string);
+                			$('#opt1').html(response[num].a);
+                			$('#opt2').html(response[num].b);
+                			$('#opt3').html(response[num].c);
+                			$('#opt4').html(response[num].d);
+                			ans.push(response[num].ans);
+                			console.log(ans);
+                			string = "";
+
+            				}
+            			});
+        			});
+			}
+			function rand () {
+				var k;
+				let itNum;
+				if (num>0) {
+					num-- ;
+					k = Math.floor(Math.random() * lst.length);
+					itNum = lst[k];
+					lst.splice(k, 1);
+				}
+				return itNum;
+			}
+			function clear(){
+				num = 0;
+				ans = [];
+				score = 0;
+				iNum = 0;
+				item = 0;
+				seconds=30;
+			}
+			function display()
+			{
+		    	seconds-=1;
+				if(seconds==0 && num>0)
+				{
+		 			seconds = 30;
+		 			run(rand());
+		 		}
+					if(seconds<0 && item==0) {
+						$('#quizContainer').hide();
+						$('#Play').show();
+						$('#battle').show();
+						$('#quiz').show();
+						$('#10').html('Level 1 <br> (10 Choice)').hide();
+						$('#20').html('Level 2 <br> (20 Choice)').hide();
+						$('#choose').hide();
+						$('#level').hide();	
+						num = -1;
+				}
+		    		document.getElementById("counter").value=seconds;
+		    		setTimeout("display()",2000);
+			}
+			h();
+			function h (){
+			$(function()
+			{	
+				$('#quizContainer').hide();
+				clearInterval(seconds);
+				$('#counter').hide();
+				$('#Play').show();
+				$('#battle').show();
+				$('#quiz').show();
+				$('#10').html('Level 1 <br> (10 Choice)').hide();
+				$('#20').html('Level 2 <br> (20 Choice)').hide();
+				$('#choose').hide();
+				$('#level').hide();
+				$('#Play').html('Play Game').click(function()
+				{
+  					$('#battle').hide();
+   					$('#quiz').hide();
+   					$('#Play').hide();
+   					$('#choose').show();
+   					$('#level').show();
+   					$('#10').show();
+   					$('#20').show();
+				});
+			});
+			}
+
+			$('#10').click(function()
+			{
+					$('#choose').hide();
+   					$('#level').hide();
+   					$('#10').hide();
+   					$('#20').hide();
+   					$('#counter').show();
+   					$('#quizContainer').show();
+   					num = 10;
+   					run(rand());
+
+   					display();
+   					
+        	});
+        	$('#20').click(function()
+			{
+					$('#choose').hide();
+   					$('#level').hide();
+   					$('#10').hide();
+   					$('#20').hide();
+   					$('#counter').show();
+   					$('#quizContainer').show();
+   					num=20;
+   					run(rand())
+   					display();
+
+        	});
+        	$('.option').click(function(){
+        		if ($(this).html() == ans[ans.length-1]){
+        				score++;	
+        				clearInterval(seconds)
+        				console.log(score); 				
+       			}
+        		if(num>0){
+        			seconds = 30;
+					run(rand());
+						
+        		}else{
+        			window.alert("ถูกทั้งหมด" + score + "ข้อ");
+        			clearInterval(seconds)
+        			clear();
+        			h();
+        		}
+        	})
+		</script>
+
+
+  		
+
+
+	
+	</body>
+</html>

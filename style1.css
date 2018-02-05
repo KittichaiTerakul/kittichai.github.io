@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+body {
+	background-image: url(wall1.jpg);
+	background-repeat: no-repeat;
+	background-size: 1400px 700px ;
+	width: 95%;
+	height: 95%;
+
+}
+
+.container{
+	height: 400px;
+	width: 1000px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%)  translateY(-50%);
+	background-color: DarkRed ;
+	padding: 25px;
+	border: 2px solid black;
+	box-shadow: 0 0 8px 3px ;
+}
+.title{
+	font-family: 'Shadows Into Light', cursive;
+	padding-top: 20px;
+	text-align: center;
+	font-size: 50px;
+	text-transform: uppercase;
+	color: DarkOrange ;
+	text-shadow: 5px 5px black;
+}
+.counter{
+	
+	text-align: center;
+	border-color: red;
+	background-color: black;
+	font-size: 20px;
+	color : white;
+}
+.question{
+	padding: 20px;
+	font-stretch: 22px;
+	background-color: BurlyWood ;
+	border-radius: 30px;
+	margin: 10px 0 10px 0 ;
+	color: LightCoral ;
+	
+}
+.option{
+	width: 470px;
+	height: 50px;
+	display: inline-block;
+	padding: 10px 0 10px 15px;
+	vertical-align: middle;
+	background-color: Cornsilk ;
+	margin: 10px 0 10px 10px;
+	color: red;
+	border-radius: 20px;
+
+}
+.option:hover{
+	background-color: DarkOliveGreen ;
+	color: #f6f6f6;
+}
+.next-btn{
+	border: none;
+	outline: none;
+	background: rgba(255,25,255,0.5);
+	width: 100px;
+	height: 35px;
+	border-radius: 20px;
+	cursor: pointer;
+	float: right;
+	margin: 10px;
+}
+.next-btn:hover{
+	background: #08038C;
+	columns: #f6f6f6;
+}
+.result{
+	height: 100px;
+	text-align: center;
+	font-size: 75px;
+}
+.option input:checked .option{
+	background: #08038c;
+	color: #000;
+
+}
+
+
+.btn0{
+	width: 470px;
+	display: inline-block;
+	padding: 10px 0 10px 15px;
+	vertical-align: middle;
+	background:rgba(255,255,255,0.5);
+	margin:10px 0 10px 10px;
+	color: #000000;
+	border-radius: 20px;
+}
+button.button1  {
+	background-color: Brown ; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    margin-left: 43%; 
+    width: 15%;
+    font-size: 20px;
+    font-family: 'Gloria Hallelujah', cursive;
+
+}
+button.button10  {
+	background-color: DarkCyan  ; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    margin-left: 43%; 
+    width: 15%;
+    font-size: 20px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+.button10:hover{
+	background-color: blue;
+    color: black;
+    border: 2px solid #555555;
+
+}
+button.button20  {
+	background-color: Green ; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    margin-left: 43%; 
+    width: 15%;
+    font-size: 20px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+.button20:hover{
+	background-color: GreenYellow ;
+    color: black;
+    border: 2px solid #555555;
+
+}
+.button1:hover {
+    background-color: red;
+    color: black;
+    border: 2px solid #555555;
+}
+
+div.Name-Game .battle{
+
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  
+}
+div.Name-Game .quiz{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+.battle {
+  animation: battle 10s ease-out infinite;
+}
+.quiz {
+  animation: quiz 10s ease-out infinite;
+}
+@keyframes battle {
+  0% {
+    opacity: 0;
+    transform: scale(2) translateY(-0.75em);
+  }
+  20% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
+@keyframes quiz {
+  0% {
+    opacity: 0;
+    transform: scale(2) translateY(-0.75em);
+  }
+  20% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+
+div.choose-level .choose{
+	display: block;
+    width: 50%;
+}
+div.choose-level .level{
+	display: block;
+    width: 30%;
+}
+
+
+	
+
+
+
+
+
+
+
